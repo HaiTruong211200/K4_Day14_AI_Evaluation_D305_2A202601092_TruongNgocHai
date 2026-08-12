@@ -1,0 +1,84 @@
+{
+  "corpus_id": "orbittech-customer-support-v1",
+  "title": "OrbitTech Store Customer Support",
+  "organization": "OrbitTech Store",
+  "language": "en",
+  "version": "1.0",
+  "default_effective_date": "2026-09-01",
+  "fictional": true,
+  "source_of_truth_notice": "This corpus is synthetic. For this lab, these documents are the only source of truth.",
+  "documents": [
+    {
+      "doc_id": "OT-00",
+      "path": "00_system_scope.md",
+      "title": "Customer Support Assistant Scope and Safety",
+      "use_cases": ["scope", "out_of_scope", "prompt_injection", "privacy"]
+    },
+    {
+      "doc_id": "OT-01",
+      "path": "01_product_catalog.md",
+      "title": "Product Catalog and Compatibility",
+      "use_cases": ["products", "specifications", "compatibility"]
+    },
+    {
+      "doc_id": "OT-02",
+      "path": "02_orders_and_payments.md",
+      "title": "Orders, Payments, and Cancellations",
+      "use_cases": ["orders", "payments", "cancellations", "installments"]
+    },
+    {
+      "doc_id": "OT-03",
+      "path": "03_promotions_and_membership.md",
+      "title": "Promotions and OrbitPlus Membership",
+      "use_cases": ["promotions", "membership", "eligibility", "bundles"]
+    },
+    {
+      "doc_id": "OT-04",
+      "path": "04_shipping_and_delivery.md",
+      "title": "Shipping, Delivery, and Missing Packages",
+      "use_cases": ["shipping", "delivery", "delays", "missing_packages"]
+    },
+    {
+      "doc_id": "OT-05",
+      "path": "05_returns_and_exchanges.md",
+      "title": "Returns and Exchanges",
+      "use_cases": ["returns", "exchanges", "refunds", "restocking"]
+    },
+    {
+      "doc_id": "OT-06",
+      "path": "06_warranty_policy.md",
+      "title": "Limited Warranty and Coverage",
+      "use_cases": ["warranty", "coverage", "exclusions", "proof_of_purchase"]
+    },
+    {
+      "doc_id": "OT-07",
+      "path": "07_repair_and_technical_support.md",
+      "title": "Repair and Technical Support",
+      "use_cases": ["repair", "troubleshooting", "service_times", "data_backup"]
+    },
+    {
+      "doc_id": "OT-08",
+      "path": "08_accounts_privacy_and_security.md",
+      "title": "Accounts, Privacy, and Security",
+      "use_cases": ["accounts", "privacy", "security", "fraud"]
+    },
+    {
+      "doc_id": "OT-09",
+      "path": "09_escalation_and_policy_updates.md",
+      "title": "Escalation and Policy Updates",
+      "use_cases": ["escalation", "complaints", "policy_versions", "effective_dates"]
+    }
+  ],
+  "required_use_cases": [
+    "scope",
+    "products",
+    "orders",
+    "promotions",
+    "shipping",
+    "returns",
+    "warranty",
+    "repair",
+    "security",
+    "escalation"
+  ]
+}

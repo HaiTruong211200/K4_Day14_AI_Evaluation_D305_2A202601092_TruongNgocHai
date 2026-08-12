@@ -473,8 +473,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--corpus-dir",
         type=Path,
-        default=Path("data/student_services"),
-        help="Corpus directory (default: data/student_services)",
+        default=Path("data/technology_store"),
+        help="Corpus directory (default: data/technology_store)",
     )
     parser.add_argument(
         "--dataset",

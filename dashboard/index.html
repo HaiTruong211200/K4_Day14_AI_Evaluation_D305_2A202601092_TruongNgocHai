@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="OrbitTech RAG evaluation dashboard" />
+    <title>OrbitTech RAG Evaluation Studio</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">ORBITTECH CUSTOMER SUPPORT · LAB 14</p>
+          <h1>RAG Evaluation <span>Studio</span></h1>
+          <p class="lede">See every step from question to retrieval, generation, and evaluation—without hiding the trace.</p>
+        </div>
+        <div class="status"><i></i> Local evaluation workspace</div>
+      </header>
+
+      <section class="flow panel" aria-labelledby="flow-title">
+        <div class="section-head">
+          <div><p class="kicker">PIPELINE MAP</p><h2 id="flow-title">How a score is produced</h2></div>
+          <p>Retrieval metrics diagnose evidence. Answer metrics diagnose generation.</p>
+        </div>
+        <div class="flow-grid">
+          <article><b>01</b><span>Question</span><small>User intent</small></article>
+          <em>→</em>
+          <article><b>02</b><span>BM25 retrieval</span><small>Paragraph chunks · top 5</small></article>
+          <em>→</em>
+          <article><b>03</b><span>OpenAI answer</span><small>Grounded generation</small></article>
+          <em>→</em>
+          <article><b>04</b><span>Evaluation</span><small>5 metrics + overall</small></article>
+        </div>
+        <div class="metric-legend">
+          <span><i class="cyan"></i> Context Recall — evidence coverage</span>
+          <span><i class="cyan"></i> Context Precision — ranking quality</span>
+          <span><i class="violet"></i> Faithfulness — grounded answer</span>
+          <span><i class="violet"></i> Relevance — answers the intent</span>
+          <span><i class="violet"></i> Completeness — covers expected answer</span>
+        </div>
+      </section>
+
+      <section class="summary" id="summary" aria-label="Benchmark summary"></section>
+
+      <section class="difficulty-panel panel" aria-labelledby="difficulty-title">
+        <div class="section-head compact">
+          <div><p class="kicker">GOLDEN DATASET SLICES</p><h2 id="difficulty-title">Pass rate by question type</h2></div>
+          <span class="hint">Calculated from all 20 recorded evaluations</span>
+        </div>
+        <div id="difficulty-summary" class="difficulty-summary"></div>
+      </section>
+
+      <section class="workspace">
+        <div class="ask panel">
+          <div class="section-head compact">
+            <div><p class="kicker">LIVE TRACE</p><h2>Ask OrbitTech</h2></div>
+            <span class="hint">Select a golden question for all 5 metrics</span>
+          </div>
+          <label for="question">Question</label>
+          <textarea id="question" rows="4" placeholder="Ask about products, orders, shipping, returns, warranty…"></textarea>
+          <div class="ask-actions">
+            <select id="examples" aria-label="Golden question examples"><option value="">Choose a golden question…</option></select>
+            <button id="ask-button">Run pipeline <span>→</span></button>
+          </div>
+          <p class="error" id="error" role="alert"></p>
+        </div>
+
+        <aside class="metric-panel panel">
+          <p class="kicker">CURRENT SCORECARD</p>
+          <div id="live-metrics" class="live-metrics empty">Run a question to calculate metrics.</div>
+        </aside>
+      </section>
+
+      <section id="trace" class="trace hidden">
+        <article class="answer panel">
+          <div class="section-head compact"><div><p class="kicker">GENERATED OUTPUT</p><h2>Answer</h2></div><span id="gold-badge"></span></div>
+          <p id="answer"></p>
+          <details id="expected-wrap"><summary>Expected answer</summary><p id="expected"></p></details>
+        </article>
+        <div class="section-head trace-head"><div><p class="kicker">RETRIEVAL TRACE</p><h2>Retrieved chunks</h2></div><p>Ranked by BM25 score · strongest evidence first.</p></div>
+        <div id="chunks" class="chunks"></div>
+      </section>
+
+      <section class="panel explorer">
+        <div class="section-head compact"><div><p class="kicker">BENCHMARK EXPLORER</p><h2>20 recorded evaluations</h2></div><span class="hint" id="sort-status">Overall · lowest first</span></div>
+        <div class="table-wrap"><table><thead><tr>
+          <th><button class="sort-button" data-sort="id">ID</button></th>
+          <th><button class="sort-button" data-sort="difficulty">Difficulty</button></th>
+          <th><button class="sort-button" data-sort="context_recall">Recall</button></th>
+          <th><button class="sort-button" data-sort="context_precision">Precision</button></th>
+          <th><button class="sort-button" data-sort="faithfulness">Faith.</button></th>
+          <th><button class="sort-button" data-sort="relevance">Relevance</button></th>
+          <th><button class="sort-button" data-sort="completeness">Complete</button></th>
+          <th><button class="sort-button active asc" data-sort="overall">Overall</button></th>
+          <th><button class="sort-button" data-sort="passed">Status</button></th>
+          <th>DeepEval</th>
+        </tr></thead><tbody id="results"></tbody></table></div>
+      </section>
+
+      <section class="panel deepeval-panel">
+        <div class="section-head compact">
+          <div><p class="kicker">EVALUATOR COMPARISON</p><h2>Core heuristic vs DeepEval LLM</h2></div>
+          <span class="hint" id="deepeval-model"></span>
+        </div>
+        <div id="deepeval-content" class="empty-note">Checking DeepEval results…</div>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
